@@ -10,13 +10,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.github.javafaker.Faker;
+import com.springboot.springblogmvc.categories.entities.Category;
+import com.springboot.springblogmvc.categories.repositories.CategoryRepository;
 import com.springboot.springblogmvc.users.entities.User;
 import com.springboot.springblogmvc.users.repositories.UserRepository;
+
 @SpringBootApplication
 public class SpringblogmvcApplication {
 
 	@Autowired
 	UserRepository userRepository;
+
+	@Autowired
+	CategoryRepository categoryRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringblogmvcApplication.class, args);
@@ -26,15 +32,31 @@ public class SpringblogmvcApplication {
 	CommandLineRunner commandLineRunner() {
 		return args -> {
 			int max = 10;
+
+			// Faker Instantiation
 			Faker faker = new Faker(new Locale("en-US"));
 
+			// Bcrypt Instantiation
 			BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+
+			// User Seeding (USE IT ONLY FOR DEVELOPMENT PURPOSES)
 			User user = new User("Muhammad Mujahid", "mamat1411", "mamat1411@gmail.com", bcrypt.encode("mamat1411"));
 			userRepository.save(user);
 			for (int i = 0; i < max; i++) {
-				User userSeed = new User(faker.name().fullName(), faker.name().username(), faker.internet().safeEmailAddress(), bcrypt.encode("123456"));
+				User userSeed = new User(faker.name().fullName(), faker.name().username(),
+						faker.internet().safeEmailAddress(), bcrypt.encode("123456"));
 				userRepository.save(userSeed);
 			}
+
+			// Category Seeding (USE IT ONLY FOR DEVELOPMENT PURPOSES)
+			Category backendDevelopment = new Category("Backend Development", "backend-development");
+			Category frontendDevelopment = new Category("Frontend Development", "frontend-development");
+			Category fullstackDevelopment = new Category("Fullstack Development", "fullstack-development");
+			Category personal = new Category("Personal", "personal");
+			categoryRepository.save(backendDevelopment);
+			categoryRepository.save(frontendDevelopment);
+			categoryRepository.save(fullstackDevelopment);
+			categoryRepository.save(personal);
 		};
 	}
 }
