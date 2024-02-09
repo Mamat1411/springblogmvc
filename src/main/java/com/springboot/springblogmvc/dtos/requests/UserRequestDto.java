@@ -9,6 +9,4 @@ public class UserRequestDto {
     private String username;
     private String email;
     private String password;
-    private Date createdDate;
-    private Date updatedDate;
 }
