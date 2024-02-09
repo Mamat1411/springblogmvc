@@ -1,4 +1,4 @@
-package com.springboot.springblogmvc.entities;
+package com.springboot.springblogmvc.users.entities;
 
 import java.util.Date;
 

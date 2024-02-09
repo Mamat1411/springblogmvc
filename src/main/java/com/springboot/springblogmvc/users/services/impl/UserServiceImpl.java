@@ -1,4 +1,4 @@
-package com.springboot.springblogmvc.services.impl;
+package com.springboot.springblogmvc.users.services.impl;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.springboot.springblogmvc.entities.User;
-import com.springboot.springblogmvc.repositories.UserRepository;
-import com.springboot.springblogmvc.services.UserService;
+import com.springboot.springblogmvc.users.entities.User;
+import com.springboot.springblogmvc.users.repositories.UserRepository;
+import com.springboot.springblogmvc.users.services.UserService;
 
 @Service
 public class UserServiceImpl implements UserService{

@@ -1,8 +1,8 @@
-package com.springboot.springblogmvc.services;
+package com.springboot.springblogmvc.users.services;
 
 import java.util.List;
 
-import com.springboot.springblogmvc.entities.User;
+import com.springboot.springblogmvc.users.entities.User;
 
 public interface UserService {
     List<User> getAllUser();

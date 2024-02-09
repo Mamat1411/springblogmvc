@@ -1,4 +1,4 @@
-package com.springboot.springblogmvc.dtos.responses;
+package com.springboot.springblogmvc.users.dtos.responses;
 
 import java.util.Date;
 

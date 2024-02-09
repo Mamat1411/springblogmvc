@@ -1,4 +1,4 @@
-package com.springboot.springblogmvc.dtos.requests;
+package com.springboot.springblogmvc.users.dtos.requests;
 
 import lombok.Data;
 

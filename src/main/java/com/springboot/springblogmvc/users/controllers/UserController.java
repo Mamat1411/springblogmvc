@@ -1,4 +1,4 @@
-package com.springboot.springblogmvc.controllers;
+package com.springboot.springblogmvc.users.controllers;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,17 +9,17 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springboot.springblogmvc.dtos.requests.UserRequestDto;
-import com.springboot.springblogmvc.dtos.responses.UserResponseDto;
-import com.springboot.springblogmvc.entities.User;
-import com.springboot.springblogmvc.services.UserService;
+import com.springboot.springblogmvc.users.dtos.requests.UserRequestDto;
+import com.springboot.springblogmvc.users.dtos.responses.UserResponseDto;
+import com.springboot.springblogmvc.users.entities.User;
+import com.springboot.springblogmvc.users.services.UserService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;

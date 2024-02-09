@@ -10,9 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.github.javafaker.Faker;
-import com.springboot.springblogmvc.entities.User;
-import com.springboot.springblogmvc.repositories.UserRepository;
-
+import com.springboot.springblogmvc.users.entities.User;
+import com.springboot.springblogmvc.users.repositories.UserRepository;
 @SpringBootApplication
 public class SpringblogmvcApplication {
 
