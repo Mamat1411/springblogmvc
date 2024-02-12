@@ -16,7 +16,6 @@ import com.springboot.springblogmvc.categories.dtos.responses.CategoryResponseDt
 import com.springboot.springblogmvc.categories.entities.Category;
 import com.springboot.springblogmvc.categories.services.CategoryService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
