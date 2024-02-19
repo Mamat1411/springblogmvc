@@ -70,7 +70,8 @@ public class SpringblogmvcApplication {
 				Post postSeed = new Post(
 					faker.number().numberBetween(1l, 3l), 
 					faker.number().numberBetween(1l, 5l),
-					faker.book().title(), faker.lorem().sentence(), 
+					faker.book().title(), 
+					faker.lorem().sentence(), 
 					faker.internet().slug(), 
 					String.join("", faker.lorem().paragraphs(faker.number().numberBetween(2, 5))), 
 					null);

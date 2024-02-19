@@ -8,7 +8,7 @@ import lombok.Data;
 public class PostResponseDto {
     private String title;
     private String category;
-    private String user;
+    private String author;
     private String excerpt;
     private String slug;
     private String body;

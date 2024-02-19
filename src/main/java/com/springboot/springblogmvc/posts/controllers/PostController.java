@@ -1,5 +1,6 @@
 package com.springboot.springblogmvc.posts.controllers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,11 +38,24 @@ public class PostController {
 
     @GetMapping("/")
     public ResponseEntity<?> getAllPosts() {
-        ModelMapper modelMapper = new ModelMapper();
         Map<String, Object> resultMap = new HashMap<>();
         try {
             List<Post> posts = postService.getAllPosts();
-            List<PostResponseDto> postResponseDtos = posts.stream().map(post -> modelMapper.map(post, PostResponseDto.class)).collect(Collectors.toList());
+            List<PostResponseDto> postResponseDtos = new ArrayList<>();
+            for (int i = 0; i < posts.size(); i++) {
+                PostResponseDto responseDto = new PostResponseDto();
+                responseDto.setTitle(posts.get(i).getTitle());
+                responseDto.setCategory(posts.get(i).getCategory().getName());
+                responseDto.setAuthor(posts.get(i).getUser().getName());
+                responseDto.setExcerpt(posts.get(i).getExcerpt());
+                responseDto.setSlug(posts.get(i).getSlug());
+                responseDto.setBody(posts.get(i).getBody());
+                responseDto.setPublishedAt(posts.get(i).getPublishedAt());
+                responseDto.setCreatedAt(posts.get(i).getCreatedAt());
+                responseDto.setUpdatedAt(posts.get(i).getUpdatedAt());
+
+                postResponseDtos.add(responseDto);
+            }
             resultMap.put("status", "200");
             resultMap.put("message", "success");
             resultMap.put("Data", postResponseDtos);
@@ -49,17 +63,26 @@ public class PostController {
         } catch (Exception e) {
             resultMap.put("status", "500");
             resultMap.put("message", "Internal Server Error");
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     
     @GetMapping("/{slug}")
     public ResponseEntity<?> getPostBySlug(@PathVariable("slug") String slug) {
-        ModelMapper modelMapper = new ModelMapper();
         Map<String, Object> resultMap = new HashMap<>();
         try {
             Post post = postService.getPostBySlug(slug);
-            PostResponseDto postResponseDto = modelMapper.map(post, PostResponseDto.class);
+            // PostResponseDto postResponseDto = modelMapper.map(post, PostResponseDto.class);
+            PostResponseDto postResponseDto = new PostResponseDto();
+            postResponseDto.setTitle(post.getTitle());
+            postResponseDto.setCategory(post.getCategory().getName());
+            postResponseDto.setAuthor(post.getUser().getName());
+            postResponseDto.setExcerpt(post.getExcerpt());
+            postResponseDto.setSlug(post.getSlug());
+            postResponseDto.setBody(post.getBody());
+            postResponseDto.setPublishedAt(post.getPublishedAt());
+            postResponseDto.setCreatedAt(post.getCreatedAt());
+            postResponseDto.setUpdatedAt(post.getUpdatedAt());
             resultMap.put("status", "200");
             resultMap.put("message", "success");
             resultMap.put("Data", postResponseDto);
@@ -73,10 +96,15 @@ public class PostController {
     
     @PostMapping("/")
     public ResponseEntity<?> savePost(@RequestBody PostRequestDto postRequestDto) {
-        ModelMapper modelMapper = new ModelMapper();
         Map<String, Object> resultMap = new HashMap<>();
         try {
-            Post post = modelMapper.map(postRequestDto, Post.class);
+            Post post = new Post();
+            post.setTitle(postRequestDto.getTitle());
+            post.setCategoryId(Long.valueOf(postRequestDto.getCategory()));
+            post.setUserId(Long.valueOf(postRequestDto.getAuthor()));
+            post.setExcerpt(postRequestDto.getExcerpt());
+            post.setSlug(postRequestDto.getSlug());
+            post.setBody(postRequestDto.getBody());
             resultMap.put("status", "200");
             resultMap.put("message", "success");
             resultMap.put("Data", post);
