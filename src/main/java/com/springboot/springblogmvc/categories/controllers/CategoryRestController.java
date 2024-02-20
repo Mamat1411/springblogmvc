@@ -17,10 +17,9 @@ import com.springboot.springblogmvc.categories.entities.Category;
 import com.springboot.springblogmvc.categories.services.CategoryService;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
 @RestController
 @RequestMapping("/api/categories")
-public class CategoryController {
+public class CategoryRestController {
     
     @Autowired
     CategoryService categoryService;
