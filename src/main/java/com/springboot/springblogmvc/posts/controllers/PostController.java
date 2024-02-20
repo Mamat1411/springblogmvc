@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/api/posts")
 public class PostController {
     
     @Autowired
@@ -70,7 +70,6 @@ public class PostController {
         Map<String, Object> resultMap = new HashMap<>();
         try {
             Post post = postService.getPostBySlug(slug);
-            // PostResponseDto postResponseDto = modelMapper.map(post, PostResponseDto.class);
             PostResponseDto postResponseDto = new PostResponseDto();
             postResponseDto.setTitle(post.getTitle());
             postResponseDto.setCategory(post.getCategory().getName());
