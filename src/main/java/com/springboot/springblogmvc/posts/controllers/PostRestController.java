@@ -98,6 +98,7 @@ public class PostRestController {
             post.setExcerpt(postRequestDto.getExcerpt());
             post.setSlug(postRequestDto.getSlug());
             post.setBody(postRequestDto.getBody());
+            postService.savePost(post);
             resultMap.put("status", "200");
             resultMap.put("message", "success");
             resultMap.put("Data", post);
